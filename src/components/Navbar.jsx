@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-export default function Navbar() {
+import { memo } from "react";
+function Navbar(){
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+  console.log("Navbar render");
   return (
     <div>
       <nav className="bg-gray-700 ">
@@ -103,3 +104,4 @@ export default function Navbar() {
     </div>
   );
 }
+export default memo(Navbar);

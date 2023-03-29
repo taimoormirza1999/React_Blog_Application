@@ -11,7 +11,6 @@ export default function Comment({title,name}) {
       ];
       const star=['text-gray-400','text-yellow-400']
       const randomIndex = Math.floor(Math.random() * countries.length);
-      const starIndex = Math.floor(Math.random() * star.length);
   return (
     <div key={name}>
    
@@ -19,7 +18,7 @@ export default function Comment({title,name}) {
     <div className="flex items-center mb-4 space-x-4">
         <img className="w-12 h-12 rounded-full ring-gray-300 dark:ring-gray-500" src={`https://picsum.photos/500/300?car=${name}`} alt=""/>
         <div className="space-y-1  font-medium dark:text-white">
-            <p className=' text-slate-900' >{name.charAt(0).toUpperCase() + name.slice(1)} <time dateTime="2014-08-16 19:00" className="block text-sm text-gray-500 dark:text-gray-400">Joined on August 201{Math.floor(Math.random() * 10)}</time></p>
+            <p className=' text-gray-400' >{name.charAt(0).toUpperCase() + name.slice(1)} <time dateTime="2014-08-16 19:00" className="block text-sm text-gray-500 dark:text-gray-400">Joined on August 201{Math.floor(Math.random() * 10)}</time></p>
         </div>
     </div>
     <div className="flex items-center mb-1">

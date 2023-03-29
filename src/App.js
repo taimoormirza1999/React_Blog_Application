@@ -7,6 +7,7 @@ import BlogForm from "./components/BlogForm";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Example from "./components/Example";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
   const [searchKeyword, setSearchKeyword] = useState("");
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("http://restapiv1-env.eba-ndi2mqdf.ap-northeast-1.elasticbeanstalk.com/api/admin/post")
       .then((response) => {
         setBlogs(response.data);
         setfilteredData(response.data);

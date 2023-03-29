@@ -1,6 +1,4 @@
 import React from 'react'
-import LinkButton from "./LinkButton";
-import { FaRegEdit,FaTrash } from "react-icons/fa";
 export default function Card({title, id, excerpt, handleDelete, Link}) {
   return (
     <>

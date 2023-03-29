@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Text from "./Text";
 import Heading from "./Heading";
-import LinkButton from "./LinkButton";
 import Comment from "./Comment";
 
 export default function BlogDetail() {
@@ -38,7 +37,7 @@ export default function BlogDetail() {
             <img
               className="w-10 h-10  p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 shadow-lg rounded-full absolute bottom-5 left-2 "
               src={`https://picsum.photos/500/300?car=${id}`}
-              alt=""
+              alt="fsdf"
             />
             <span className="bottom-5 left-8 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
           </div>
