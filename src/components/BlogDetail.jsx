@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Text from "./Text";
 import Heading from "./Heading";
@@ -7,12 +7,13 @@ import LinkButton from "./LinkButton";
 import Comment from "./Comment";
 
 export default function BlogDetail() {
+  
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [comment, setComment] = useState(null);
   useEffect(() => {
     axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .get(`http://restapiv1-env.eba-ndi2mqdf.ap-northeast-1.elasticbeanstalk.com/api/admin/post/${id}`)
       .then((response1) => setBlog(response1.data))
       .catch((error) => console.log(error));
     axios
@@ -47,7 +48,7 @@ export default function BlogDetail() {
         <Heading text={blog.title} />
         <Text
           size="sm"
-          text={blog.body.charAt(0).toUpperCase() + blog.body.slice(1)}
+          text={blog.content.charAt(0).toUpperCase() + blog.content.slice(1)}
         />
         <Text
           size="sm"
@@ -55,19 +56,7 @@ export default function BlogDetail() {
           assumenda corrupti. Quisquam beatae odio ducimus ratione placeat
           libero hic dolores, voluptatibus magni. Asperiores vel sunt tempora,
           possimus exercitationem rerum eos, iste repudiandae debitis molestiae
-          ab. Quisquam debitis facilis quidem odio in. Reiciendis incidunt
-          possimus quam ipsum nam porro inventore quaerat debitis, quibusdam hic
-          recusandae fuga odit fugiat quidem iusto molestiae dolorem expedita
-          doloremque. Consectetur rerum soluta quasi fuga nesciunt corporis
-          ipsam, rem beatae, saepe laborum natus perferendis quam illum labore
-          voluptatem ipsa! Molestiae, culpa. Nobis itaque dolorum tempore
-          molestiae mollitia nisi dignissimos sequi pariatur, saepe, officiis
-          aspernatur dicta vel esse nesciunt accusantium facere ex sit dolor
-          sapiente delectus illum illo. Perferendis hic quas vel quod, nostrum
-          accusantium dolore quibusdam sed voluptate ullam laborum in cumque
-          molestiae labore dolorem, distinctio suscipit. Provident repudiandae
-          dolorem a ratione architecto repellat aliquam? Quaerat optio ex
-          molestias accusantium vel, libero accusamus assumenda natus autem."
+          ab. Quisquam debitis facilis quidem odio in. "
         />
       </section>
 
