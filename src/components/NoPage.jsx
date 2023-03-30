@@ -37,7 +37,7 @@ function NoPage() {
           </button>
         </div>
       </div>
-      <a href="https://ibb.co/yNXC3wH"><img src="https://i.ibb.co/yNXC3wH/404.png" alt="404" border="0"></a>
+      {/* <a href="https://ibb.co/yNXC3wH"><img src="https://i.ibb.co/yNXC3wH/404.png" alt="404" border="0"></a> */}
       <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
         <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600"/>
       </div>
