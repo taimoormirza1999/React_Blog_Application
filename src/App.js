@@ -6,7 +6,7 @@ import BlogDetail from "./components/BlogDetail";
 import BlogForm from "./components/BlogForm";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Example from "./components/Example";
+import NoPage from "./components/NoPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -20,7 +20,9 @@ function App() {
   const [searchKeyword, setSearchKeyword] = useState("");
   useEffect(() => {
     axios
-      .get("http://restapiv1-env.eba-ndi2mqdf.ap-northeast-1.elasticbeanstalk.com/api/admin/post")
+      .get(
+        "http://restapiv1-env.eba-ndi2mqdf.ap-northeast-1.elasticbeanstalk.com/api/admin/post"
+      )
       .then((response) => {
         setBlogs(response.data);
         setfilteredData(response.data);
@@ -51,10 +53,11 @@ function App() {
     <Router>
       <Navbar />
       <div className="mx-auto container my-5 ">
-    
         <Routes>
+        <Route path="*" element={<NoPage />} />
           <Route
-            index
+            path="/React_Blog_Application"
+            index 
             element={
               <BlogList
                 blogs={blogs}
