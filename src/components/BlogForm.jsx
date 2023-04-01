@@ -12,7 +12,6 @@ function BlogForm() {
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [slug, setSlug] = useState("");
-  // const [body, setBody] = useState("");
   useEffect(() => {
     if (id) {
       axios
