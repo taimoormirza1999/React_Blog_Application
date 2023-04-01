@@ -54,21 +54,21 @@ function App() {
       <Navbar />
       <div className="mx-auto container my-5 ">
         <Routes>
-        <Route path="*" element={<NoPage />} />
           <Route
-            path="/React_Blog_Application"
-            index 
+            path="/"
+            exact  
             element={
               <BlogList
-                blogs={blogs}
-                setBlogs={setBlogs}
-                filteredData={filteredData}
-                handleSearch={handleSearch}
-                handleDelete={handleDelete}
-                data={data}
+              blogs={blogs}
+              setBlogs={setBlogs}
+              filteredData={filteredData}
+              handleSearch={handleSearch}
+              handleDelete={handleDelete}
+              data={data}
               />
             }
           />
+            <Route path="*" element={<NoPage />} />
           <Route path="blog/:id" element={<BlogDetail />} />
           <Route path="blog/manage/:id?" element={<BlogForm />} />
         </Routes>

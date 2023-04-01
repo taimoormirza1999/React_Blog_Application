@@ -19,8 +19,7 @@ function BlogForm() {
         .get(`http://127.0.0.1:8000/api/admin/post/${id}`)
         .then((response) => {
           setTitle(response.data.title);
-          // setBody(response.data.body);
-        })
+             })
         .catch((error) => console.log(error));
     }
   }, [id]);
@@ -31,10 +30,7 @@ function BlogForm() {
     const data = { title, excerpt, content, slug, userId: 1 };
     axios.post('http://restapiv1-env.eba-ndi2mqdf.ap-northeast-1.elasticbeanstalk.com/api/admin/post/', data)
     .then(response => {
-      console.log(response.data);
-      // console.log(data);
-      setTitle('');
-    //   setBody('');
+      window.location.href="/";
     })
     .catch(error => console.log(error));
     // const url = id
@@ -46,7 +42,7 @@ function BlogForm() {
   //     .then(() => history("/"))
   //     .catch((error) => console.log(error));
   };
-  console.log("Form render");
+  // console.log("Form render");
   return (
 
     <>

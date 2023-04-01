@@ -12,7 +12,7 @@ export default function BlogList({
   searchKeyword,
   data,
 }) {
-  const itemsPerPage = 2;
+  const itemsPerPage = 6;
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = filteredData.slice(itemOffset, endOffset);
@@ -31,7 +31,7 @@ export default function BlogList({
       {/* Map Results */}
       <div className="w-11/12 mx-auto mt-6">
         <div className="flex justify-between">
-          <Heading text="Blog Posts" />{" "}
+          <Heading text="Blog" />{" "}
           <div className="mt-4">
             <LinkButton to="/blog/manage" title="Create Post" />
           </div>
