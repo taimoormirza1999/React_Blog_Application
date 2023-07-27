@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import Card from "./Card";
-export default function BlogListCard(props) {
+export default function BlogListCard({filteredData,handleDelete}) {
   
   return (
-    props.filteredData.map((blog, index) => (
-    <Link  to={`/blog/${blog.id}`} key={blog.id}>     
-      <Card title={blog.title} excerpt={blog.body} id={blog.id}  handleDelete={props.handleDelete} Link={Link}/>
+    filteredData.map((blog, index) => (
+    <Link  to={`/blog/${blog.id}`} key={index} id={index}>     
+      <Card title={blog.title} excerpt={blog.body} id={blog.id}  handleDelete={handleDelete} Link={Link}/>
 
      </Link>
      ))

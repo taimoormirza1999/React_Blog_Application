@@ -6,12 +6,15 @@ import Heading from "./Heading";
 import Text from "./Text";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
+
 export default function BlogList({
   filteredData,
   handleSearch,
   searchKeyword,
-  data,
+  isPending,
 }) {
+
+ 
   const itemsPerPage = 6;
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
@@ -37,7 +40,7 @@ export default function BlogList({
           </div>
         </div>
         <div className=" my-5 ">
-          {data === "true" ? (
+          {isPending===false ? (
             <>
               {currentItems.length === 0 && (
                 <Text size="sm" text="Sorry No results found!" />
@@ -47,7 +50,7 @@ export default function BlogList({
               </div>
 
               <ReactPaginate
-                className="text-white flex p-5 gap-1 mx-auto my-5"
+                className="text-white flex p-5 gap-1 mx-auto my-5 justify-center"
                 breakLabel="..."
                 nextLabel="Next"
                 onPageChange={handlePageClick}

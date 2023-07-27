@@ -6,7 +6,7 @@ import BlogDetail from "./components/BlogDetail";
 import BlogForm from "./components/BlogForm";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import NoPage from "./components/NoPage";
+import ShadowContext from './context/ShadowContext';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -20,9 +20,7 @@ function App() {
   const [searchKeyword, setSearchKeyword] = useState("");
   useEffect(() => {
     axios
-      .get(
-        "http://restapiv1-env.eba-ndi2mqdf.ap-northeast-1.elasticbeanstalk.com/api/admin/post"
-      )
+      .get("https://jsonplaceholder.typicode.com/posts")
       .then((response) => {
         setBlogs(response.data);
         setfilteredData(response.data);
@@ -48,27 +46,29 @@ function App() {
   // ---------------------------------------
   // ---------------------------------------
   // ---------------------------------------
+  const shadow = "shadow-lg shadow-slate-700"; // Move the shadow variable here
 
   return (
     <Router>
       <Navbar />
       <div className="mx-auto container my-5 ">
+    
         <Routes>
           <Route
-            path="/"
-            exact  
+            index
             element={
+              <ShadowContext.Provider value={shadow}>
               <BlogList
-              blogs={blogs}
-              setBlogs={setBlogs}
-              filteredData={filteredData}
-              handleSearch={handleSearch}
-              handleDelete={handleDelete}
-              data={data}
-              />
+                blogs={blogs}
+                setBlogs={setBlogs}
+                filteredData={filteredData}
+                handleSearch={handleSearch}
+                handleDelete={handleDelete}
+                data={data}
+              /> 
+              </ShadowContext.Provider>
             }
           />
-            <Route path="*" element={<NoPage />} />
           <Route path="blog/:id" element={<BlogDetail />} />
           <Route path="blog/manage/:id?" element={<BlogForm />} />
         </Routes>

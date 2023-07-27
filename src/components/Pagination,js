@@ -1,0 +1,41 @@
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
+const Pagination = ({ currentPage, totalPages, handlePrev, handleNext }) => {
+  return (
+    <section className="flex justify-center mt-4">
+      <nav className="flex items-center">
+        {currentPage > 1 && (
+          <button
+            onClick={handlePrev}
+            className="mx-1 px-3 py-2 rounded-full bg-gray-200 text-gray-700"
+          >
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+        )}
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleNext(index + 1)}
+            className={`mx-1 px-3 py-2 rounded-full ${
+              index + 1 === currentPage ? "bg-gray-600 text-white" : "bg-gray-200 text-gray-700"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
+        {currentPage < totalPages && (
+          <button
+            onClick={handleNext}
+            className="mx-1 px-3 py-2 rounded-full bg-gray-200 text-gray-700"
+          >
+            <FontAwesomeIcon icon={faArrowRight} />
+          </button>
+        )}
+      </nav>
+    </section>
+  );
+};
+
+export default Pagination;

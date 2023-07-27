@@ -1,39 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Heading from "./Heading";
 import { memo } from "react";
 import Input from "./Input";
 
-function BlogForm() {
+function BlogForm({blogs,setData, setfilteredData}) {
   const { id } = useParams();
   const history = useNavigate();
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [slug, setSlug] = useState("");
-  useEffect(() => {
-    if (id) {
-      axios
-        .get(`http://127.0.0.1:8000/api/admin/post/${id}`)
-        .then((response) => {
-          setTitle(response.data.title);
-             })
-        .catch((error) => console.log(error));
-    }
-  }, [id]);
+  
+  // useEffect(() => {
+  //   if (id) {
+  //     axios
+  //       .get(`http://127.0.0.1:8000/api/admin/post/${id}`)
+  //       .then((response) => {
+  //         setTitle(response.data.title);
+  //            })
+  //       .catch((error) => console.log(error));
+  //   }
+  // }, [id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setSlug(title)
     const data = { title, excerpt, content, slug, userId: 1 };
-    axios.post('http://restapiv1-env.eba-ndi2mqdf.ap-northeast-1.elasticbeanstalk.com/api/admin/post/', data)
+    axios.post('http://127.0.0.1:8000/api/admin/post/', data)
     .then(response => {
-      window.location.href="/";
+      setData([data,...blogs]);
+      setfilteredData([data,...blogs]);
+      history('/');
     })
     .catch(error => console.log(error));
-    // const url = id
-  //     ? `https://jsonplaceholder.typicode.com/posts/${id}`
+  // const url = id
+  //      `https://jsonplaceholder.typicode.com/posts/${id}`
   //     : "https://jsonplaceholder.typicode.com/posts";
   //   const method = id ? "put" : "post";
   //   console.log(data);
@@ -52,7 +55,6 @@ function BlogForm() {
         <form onSubmit={handleSubmit}>
           <Input setTitle={setTitle} title={title} label="Title" />
           <Input setTitle={setExcerpt} title={excerpt} label="Excerpt" />
-          {/* <Input setTitle={setContent} title={content} label="Content" /> */}
           <div className="mb-4">
             <label
               htmlFor="body"
