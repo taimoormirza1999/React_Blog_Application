@@ -9,10 +9,11 @@ const useFetch = (url) => {
   const handleSearch = (e) => {
     let keyword = e.target.value.toLowerCase();
     setSearchKeyword(keyword);
-    let arr = [];
+    let arr = []; 
     arr = data.filter((blogs) => blogs.title.toLowerCase().includes(keyword));
     setfilteredData(arr);
   };
+  // useEffect
   useEffect(() => {
     const abortCont = new AbortController();
     setTimeout(() => {
