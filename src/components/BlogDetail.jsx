@@ -11,18 +11,21 @@ export default function BlogDetail() {
   const [blog, setBlog] = useState(null);
   const [comment, setComment] = useState(null);
   useEffect(() => {
-    axios
-      .get(`http://restapiv1-env.eba-ndi2mqdf.ap-northeast-1.elasticbeanstalk.com/api/admin/post/${id}`)
-      .then((response1) => setBlog(response1.data))
-      .catch((error) => console.log(error));
-    axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
-      .then((response) => setComment(response.data))
-      .catch((error) => console.log(error));
+    async function fetchData() {
+    const url1=`http://restapiv1-env.eba-ndi2mqdf.ap-northeast-1.elasticbeanstalk.com/api/admin/post/${id}`;
+    const url2=`https://jsonplaceholder.typicode.com/posts/${id}/comments`;
+    const [response1, response2] = await axios.all([
+      axios.get(url1),
+      axios.get(url2)
+    ]);
+    setBlog(response1.data);
+    setComment(response2.data);
+  }
+  fetchData();
   }, [id]);
 
   if (!blog) {
-    return <div>Loading...</div>;
+    return  <Text size="sm" text="Loading..." />;
   }
   return (
     <div className="mx-auto rounded-full ">
